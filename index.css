@@ -9,10 +9,25 @@ html {
   margin: 0 auto;
 }
 
-.square{
+#s1, #s2, #s3, #s4, #s5, #s6, #s7, #s8, #s9 {
   width: 140px;
   height: 140px;
   border: 1px solid #000;
+  cursor: pointer;
 }
 
+.new-game {
+  font-family: Inconsolata, sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 9rem;
+  height: 3.5rem;
+  margin: 20px;
+  border: 2px solid;
+}
 
+.new-game:focus { outline: none; }
+
+.new-game { color: #fec02d; background-color: white; }
+.new-game:hover { background-color: #735b20; }
+.new-game:active, .new-game.active { background-color: #fec02d; }

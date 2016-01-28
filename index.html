@@ -11,28 +11,31 @@
     <div id="board">
     <table id="center-table">
       <tr id="first-row">
-        <td class="square"></td>
-        <td class="square v"></td>
-        <td class="square"></td>
+        <td id="s1"></td>
+        <td id="s2"></td>
+        <td id="s3"></td>
       </tr>
       <tr id="second-row">
-        <td class="square"></td>
-        <td class="square"></td>
-        <td class="square"></td>
+        <td id="s4"></td>
+        <td id="s5"></td>
+        <td id="s6"></td>
       </tr>
       <tr id="third-row">
-        <td class="square"></td>
-        <td class="square"></td>
-        <td class="square"></td>
+        <td id="s7"></td>
+        <td id="s8"></td>
+        <td id="s9"></td>
       </tr>
     </table>
     </div>
+
+    <button class="new-game">New Game</button>
 
   </body>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="tic-tac-toe.js"></script>
   <script type="text/javascript">
     $(document).on('ready', function() {
+      game = new TicTacToe();
       console.log('create and begin the game here!');
     })
   </script>
