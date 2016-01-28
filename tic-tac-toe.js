@@ -1,25 +1,29 @@
 function TicTacToe() {
-  this.player1_move = "X"; 
-  this.player2_move = "O"; 
   this.wins = [7, 56, 448, 73, 146, 292, 273, 84];
-  this.turn = "X";
-  this.squares = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  this.turn = "O";
+  this.squares = [];
   this.boxes = ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9"]; 
   this.moves = 0;
+  this.score = {"X": 0, "O": 0};
 
   this.newGame();
   this.selectSpace();
-  this.checkForWinner();
+  this.winningScore();
+  this.checkEnvironment();
 }
 
 TicTacToe.prototype = {
-  var self = this;
   newGame: function(){
+    var self = this;
     $(".new-game").click(function () {
       console.log("HELLO");
-      self.squares = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
-      self.turn = "X";
+      self.squares = [];
+      self.turn = "O";
       self.score = {"X": 0, "O": 0};
+      self.boxes.forEach(function(box) {
+        $("#" + box).css('background-color', 'white');
+        $("#" + box).empty();
+      });
     });
   },
 
@@ -27,20 +31,38 @@ TicTacToe.prototype = {
     var self = this;
     this.boxes.forEach(function(box) {
       $("#" + box).click(function () {
-        $(this).css('background-color', '#ff0000'); 
-        $(this).append('X');
+        if (self.turn == "X") {
+          $(this).css('background-color', 'red'); 
+        } else {
+          $(this).css('background-color', 'blue'); 
+        };
+
+        $(this).append('<h1>', self.turn, '</h1>');
         self.moves ++;
+        self.score[self.turn] ++;
+        this.onclick = self.checkEnvironment();;
       });
     });
   }, 
 
-  checkForWinner: function(score){
+  checkEnvironment: function(){
+    var self = this; 
+    if (self.winningScore(self.score[self.turn])) {
+      alert(self.turn + " wins!");
+    } else if (self.moves === 9) {
+      alert("TIE");
+    } else {
+      self.turn = self.turn === "X" ? "O" : "X";
+    }
+  },
+
+  winningScore: function(score){
     var self = this;
-    for (i = 0; i < wins.length; i += 1) {
-      if ((wins[i] & score) === wins[i]) {
-          return true;
-      };
-    };
+    for (i = 0; i < self.wins.length; i += 1) {
+      if ((self.wins[i] & score) === self.wins[i]) {
+        return true;
+      }
+    }
     return false;
-  }
+  },
 };
