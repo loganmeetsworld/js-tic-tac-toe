@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|News+Gothic|Inconsolata|Droid+Sans|Raleway');
+
 html {
-  
+  text-align: center; 
+  font-family: Inconsolata, sans-serif;
 }
+
+#center-table {
+  margin: 0 auto;
+}
+
+.square{
+  width: 140px;
+  height: 140px;
+  border: 1px solid #000;
+}
+
+
