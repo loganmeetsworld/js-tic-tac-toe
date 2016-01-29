@@ -36,10 +36,14 @@ TicTacToe.prototype = {
     var self = this;
     self.boxes.forEach(function(box) {
       $("#" + box).click(function () {
-        $(this).append('<h1>' + self.turn + '</h1>');
-        self.moves ++;
-        self.score[self.turn] += box[1];
-        this.onclick = self.checkEnvironment();;
+        if ($(this).is(':empty')){
+          $(this).append('<h1>' + self.turn + '</h1>');
+          self.moves ++;
+          self.score[self.turn] += box[1];
+          this.onclick = self.checkEnvironment();;
+        } else {
+          alert("Already selected!") 
+        };
       });
     });
   }, 
