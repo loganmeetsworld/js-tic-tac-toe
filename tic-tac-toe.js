@@ -10,7 +10,7 @@ function TicTacToe() {
   })
 
   this.moves = 0;
-  this.score = {"X": [], "O": []};
+  this.score = {"X": 0, "O": 0};
 
   this.newGame();
   this.selectSpace();
@@ -25,7 +25,7 @@ TicTacToe.prototype = {
       console.log("HELLO");
       self.turn = "O";
       self.moves = 0;
-      self.score = {"X": [], "O": []};
+      self.score = {"X": 0, "O": 0};
       self.boxes.forEach(function(box) {
         $("#" + box).empty();
       });
@@ -38,7 +38,7 @@ TicTacToe.prototype = {
       $("#" + box).click(function () {
         $(this).append('<h1>' + self.turn + '</h1>');
         self.moves ++;
-        self.score[self.turn].push(box[1]);
+        self.score[self.turn] += box[1];
         this.onclick = self.checkEnvironment();;
       });
     });
@@ -48,8 +48,12 @@ TicTacToe.prototype = {
     var self = this; 
     if (self.winningScore(self.score[self.turn])) {
       alert(self.turn + " wins!");
+      self.newGame();
+      $(".new-game").click()
     } else if (self.moves === 9) {
       alert("TIE");
+      self.newGame();
+      $(".new-game").click()
     } else {
       self.turn = self.turn === "X" ? "O" : "X";
     }
@@ -57,8 +61,13 @@ TicTacToe.prototype = {
 
   winningScore: function(score){
     var self = this;
+
+    // get all combinations 
+    // see includes combinations
+
+
     for (i = 0; i < self.wins.length; i += 1) {
-      if (score === self.wins[i]) {
+      if ((score & self.wins[i]) === self.wins[i]) {
         return true;
       }
     }
