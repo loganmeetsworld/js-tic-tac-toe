@@ -3,7 +3,7 @@ function TicTacToe() {
   this.binary_wins = [7, 56, 448, 73, 146, 292, 273, 84];
   this.current_turn = "O";
 
-  // box logic
+  // box logic for location and scores
   this.boxes = [["tl"], ["tm"], ["tr"], ["ml"], ["mm"], ["mr"], ["bl"], ["bm"], ["br"]]; 
   var count = 1;
   this.boxes.forEach(function(box){
@@ -14,6 +14,8 @@ function TicTacToe() {
   // things to be reset in new game
   this.moves = 0;
   this.score = {"X": 0, "O": 0};
+
+  // functions
   this.newGame();
   this.selectSpace();
   this.winningScore();
@@ -56,13 +58,12 @@ TicTacToe.prototype = {
     var self = this; 
     if (self.winningScore(self.score[self.current_turn])) {
       alert("Player " + self.current_turn + " wins!");
-      self.newGame();
       $(".new-game").click()
     } else if (self.moves === 9) {
       alert("TIE");
-      self.newGame();
       $(".new-game").click()
     } else {
+      // this is wear minimax logic would come in
       self.current_turn = self.current_turn === "X" ? "O" : "X";
     }
   },
