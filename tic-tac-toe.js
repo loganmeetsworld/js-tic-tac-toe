@@ -1,5 +1,5 @@
 function TicTacToe() {
-  this.wins = [7, 56, 448, 73, 146, 292, 273, 84];
+  this.binary_wins = [7, 56, 448, 73, 146, 292, 273, 84];
   this.turn = "O";
   this.boxes = [["tl"], ["tm"], ["tr"], ["ml"], ["mm"], ["mr"], ["bl"], ["bm"], ["br"]]; 
 
@@ -51,7 +51,7 @@ TicTacToe.prototype = {
   checkEnvironment: function(){
     var self = this; 
     if (self.winningScore(self.score[self.turn])) {
-      alert(self.turn + " wins!");
+      alert("Player " + self.turn + " wins!");
       self.newGame();
       $(".new-game").click()
     } else if (self.moves === 9) {
@@ -65,13 +65,8 @@ TicTacToe.prototype = {
 
   winningScore: function(score){
     var self = this;
-
-    // get all combinations 
-    // see includes combinations
-
-
-    for (i = 0; i < self.wins.length; i += 1) {
-      if ((score & self.wins[i]) === self.wins[i]) {
+    for (i = 0; i < self.binary_wins.length; i += 1) {
+      if ((score & self.binary_wins[i]) === self.binary_wins[i]) {
         return true;
       }
     }
