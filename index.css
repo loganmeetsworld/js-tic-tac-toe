@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|News+Gothic|Inconsolata|Droid+Sans|Raleway');
+
 html {
-  
+  text-align: center; 
+  font-family: Inconsolata, sans-serif;
 }
+
+h1 {
+  font-size: 3em;
+}
+
+#center-table {
+  margin: 0 auto;
+}
+
+#tl, #tm, #tr, #ml, #mm, #mr, #bl, #bm, #br {
+  width: 140px;
+  height: 140px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.new-game {
+  font-family: Inconsolata, sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 11rem;
+  height: 3.5rem;
+  margin: 20px;
+  border: 2px solid;
+}
+
+.new-game:focus { outline: none; }
+
+.new-game { color: #fec02d; background-color: white; }
+.new-game:hover { background-color: #735b20; }
+.new-game:active, .new-game.active { background-color: #fec02d; }
